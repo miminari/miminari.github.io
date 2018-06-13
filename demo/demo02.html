@@ -1,0 +1,92 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<style>
+.media,.media-noobjectfit {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+}
+.media-v {
+    width: 200px;
+    height: 400px;
+}
+.media img,
+.media-noobjectfit img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 300%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.media-circle {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+@supports ( object-fit: cover ) {
+    .media img {
+        position: static;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+        top: 0;
+        -ms-transform: none;
+        -moz-transform: none;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+</style>
+    </head>
+    <body>
+<h1>object-fit demo</h1>
+<span class="media">
+    <img src="image01.jpg" alt="" />
+</span>
+<span class="media">
+    <img src="image02.jpg" alt="" />
+</span>
+
+<span class="media media-v">
+    <img src="image01.jpg" alt="" />
+</span>
+<span class="media media-v">
+    <img src="image02.jpg" alt="" />
+</span>
+<h2>object-fitなし</h2>
+<span class="media-noobjectfit">
+    <img src="image01.jpg" alt="" />
+</span>
+<span class="media-noobjectfit">
+    <img src="image02.jpg" alt="" />
+</span>
+
+<span class="media-v media-noobjectfit">
+    <img src="image01.jpg" alt="" />
+</span>
+<span class="media-v media-noobjectfit">
+    <img src="image02.jpg" alt="" />
+</span>
+
+<h2>object-fitなし サークル</h2>
+<span class="media media-circle media-noobjectfit">
+    <img src="image01.jpg" alt="" />
+</span>
+<span class="media media-circle media-noobjectfit">
+    <img src="image02.jpg" alt="" />
+</span>
+    </body>
+</html>
