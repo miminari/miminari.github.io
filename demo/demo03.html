@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <title>DEMO3</title>
     <style media="screen">
+    /*
         html {
             color: #5E6150;
             font-size: 1em;
             line-height: 1.4;
             font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Yu Gothic", YuGothic, Meiryo, sans-serif;
-        }
+        }*/
         ul {
             padding: 0;
             margin: 0;
@@ -21,8 +22,7 @@
             padding-left: 1.2em;
             text-indent: -1.2em;
             list-style: none;
-            word-break: break-all;
-            /* text-align: justify; */
+            text-align: justify;
         }
         li:before {
             content: '';
@@ -36,10 +36,22 @@
             margin-right: .2em;
             vertical-align: middle;
         }
+        ul.no-justify li {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
+    <h1>DEMO03 text-align:justify</h1>
+    <h2>text-align:justifyあり</h2>
     <ul>
+        <li><a href="#">出あああああああああああああああああああああああああああああああ</a></li>
+        <li>出ああああああああああああああああああああああああああああああ</li>
+        <li>赤あああああああああああああああああああああ</li>
+        <li>マタあああああああああああああああああああああああああああああああ</li>
+    </ul>
+    <h2>text-align:justify無し</h2>
+    <ul class="no-justify">
         <li><a href="#">出あああああああああああああああああああああああああああああああ</a></li>
         <li>出ああああああああああああああああああああああああああああああ</li>
         <li>赤あああああああああああああああああああああ</li>
