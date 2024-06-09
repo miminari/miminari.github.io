@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お菓子の虜 検索サービス</title>
+  </head>
+  <body>
+    <h1>お菓子の虜 検索サービス</h1>
+    <p>普通に素のJavaScriptで検索して表示する</p>
+    <input
+      type="text"
+      id="snack-input"
+      placeholder="お菓子の名前を入力"
+      oninput="fetchSnacks()"
+      autocomplete="off"
+    />
+    <ul id="suggestions"></ul>
+    <div id="snack-info"></div>
+
+    <script>
+      function fetchSnacks() {
+        const query = document.getElementById("snack-input").value;
+        if (query.length > 0) {
+          fetch(
+            `https://sysbird.jp/toriko/api/?apikey=guest&format=json&max=20&keyword=${encodeURIComponent(
+              query
+            )}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const suggestions = document.getElementById("suggestions");
+              suggestions.innerHTML = "";
+              data.item.forEach((snack) => {
+                const li = document.createElement("li");
+                li.textContent = snack.name;
+                li.onmouseover = () => displaySnackInfo(snack);
+                li.onclick = function () {
+                  displaySnackInfo(snack);
+                  suggestions.innerHTML = "";
+                };
+                suggestions.appendChild(li);
+              });
+            })
+            .catch((error) => console.error("Error:", error));
+        } else {
+          document.getElementById("suggestions").innerHTML = "";
+        }
+      }
+
+      function displaySnackInfo(snack) {
+        const snackInfo = document.getElementById("snack-info");
+        snackInfo.innerHTML = `
+        <h2>${snack.name}</h2>
+        <figure><img src="${snack.image}" alt="お菓子のパッケージ画像" /></figure>
+        <a href="${snack.url}" target="_blank">詳細を見る</a>
+    `;
+      }
+    </script>
+  </body>
+</html>
